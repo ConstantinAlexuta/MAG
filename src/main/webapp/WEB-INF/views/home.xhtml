@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/layouts/header.xhtml"
+>
+
+<f:view contentType="text/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>General Administration Module</title>
+        <link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/screen.css" type="text/css"
+              media="screen, projection"/>
+        <link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/print.css" type="text/css"
+              media="print"/>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" href="${request.servletPath}/styles/blueprint/ie.css" type="text/css"
+              media="screen, projection"/>
+        <![endif]-->
+        <ui:insert name="headIncludes"/>
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="/WEB-INF/layouts/header.xhtml"/>
+
+        <div class="">
+
+            <div class="card">
+
+                <p:splitter layout="vertical">
+
+                    <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" maxSize="10">
+
+                    </p:splitterPanel>
+
+                    <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" minSize="10">
+                        <p:splitter style="height: 400px">
+                            <!--                            <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" minSize="30">-->
+                            <!--                                Panel 1-->
+                            <!--                            </p:splitterPanel>-->
+                            <p:splitterPanel size="120">
+                                <p:splitter layout="vertical">
+                                    <p:splitterPanel size="120">
+                                        <p:splitter>
+                                            <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" minSize="120">
+                                                <ui:include src="/WEB-INF/primefaces/tables/pf_tbl_parameter.xhtml"/>
+                                            </p:splitterPanel>
+                                        </p:splitter>
+                                    </p:splitterPanel>
+                                </p:splitter>
+                            </p:splitterPanel>
+                        </p:splitter>
+                    </p:splitterPanel>
+
+                    <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" maxSize="10">
+
+                    </p:splitterPanel>
+
+                </p:splitter>
+            </div>
+
+        </div>
+    </h:body>
+
+</f:view>
+</html>

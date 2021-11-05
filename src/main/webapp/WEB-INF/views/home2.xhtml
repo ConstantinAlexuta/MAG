@@ -1,0 +1,289 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/header.xhtml">
+
+
+    <ui:define name="title"></ui:define>
+
+    <ui:define name="notes">
+        <!--        <div>-->
+        <!--            <p>Some notes</p>-->
+        <!--        </div>-->
+        <p>
+            <!--		Note that in "development" mode you can make changes to flow definitions without the -->
+            <!--		need to restart the server. The development mode is specified in -->
+            <!--		<span class="alt">src/main/webapp/WEB-INF/spring/appServlet/webflow.xml</span>.-->
+        </p>
+        <!--        <hr/>-->
+    </ui:define>
+
+    <ui:define name="content">
+        <!--        <hr/>-->
+        <br/>
+
+        <div class="card">
+            <h5>Nested</h5>
+            <p:splitter style="height: 300px">
+                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" size="20" minSize="10">
+                    Panel 1
+                </p:splitterPanel>
+                <p:splitterPanel size="80">
+                    <p:splitter layout="vertical">
+                        <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" size="15">
+                            Panel 2
+                        </p:splitterPanel>
+                        <p:splitterPanel size="85">
+                            <p:splitter>
+                                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" size="20">
+                                    Panel 3
+                                </p:splitterPanel>
+                                <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" size="80">
+                                    Panel 4
+                                </p:splitterPanel>
+                            </p:splitter>
+                        </p:splitterPanel>
+                    </p:splitter>
+                </p:splitterPanel>
+            </p:splitter>
+        </div>
+
+
+        <div class="card">
+            <h5>Responsive Grid</h5>
+            <style>
+        /* reset on the showcase style*/
+        body .ui-panelgrid .ui-panelgrid-cell {
+            background-color: transparent;
+        }
+
+        /* example use of styles for your form */
+        .my-heading-row {
+            background-color: var(--surface-c);
+            font-weight: bold;
+        }
+
+            </style>
+
+            <!--
+            Note: Rows and columns can have style, styleClass, and id.
+            Note: A column with a defined styleClass will ignore the styleClass specified in the columnClasses list.
+            Note: Note the use of ui-fluid to ensure that components are sized correctly and the use of ui-panelgrid-blank to remove borders.
+            -->
+            <p:panelGrid columns="4"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    Biographic
+                </p:row>
+
+                <p:outputLabel for="@next" value="First Name"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Last Name"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Phone"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Email"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Address"/>
+                <p:inputTextarea rows="3"/>
+
+                <p:row id="my-row-id" styleClass="my-heading-row" style="font-weight: bold">
+                    Vehicle
+                </p:row>
+
+                <p:outputLabel for="@next" value="Manufacturer"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Series"/>
+                <p:inputText/>
+
+                <p:outputLabel for="@next" value="Color"/>
+                <p:inputText/>
+
+                <p:outputLabel for="idReg" value="Registration Number"/>
+                <p:column style="background-color: lightcoral">
+                    <p:inputText id="idReg"/>
+                </p:column>
+
+                <p:row>
+                    <p:column styleClass="ui-grid-col-12">
+                        <p>It should be noted that the use of @next is not possible for the
+                            <u>Registration Number</u> outputLabel and the <u>for</u> attribute
+                            should utilize an ID as shown in the example. The other outputLabel and inputText fields do
+                            not require this
+                            as they are the natural next element whereas
+                            <u>Registration Number</u> is encapsulated in a column.</p>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column styleClass="ui-grid-col-12">
+                        <p:commandButton value="Accept" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Reject" styleClass="p-mr-2" style="width: auto"/>
+                        <p:commandButton value="Refer" style="width: auto"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+        </div>
+
+
+        <div class="span-4 colborder">
+            <h6>Applications</h6>
+
+            <div class="card">
+                <h:form>
+                    <p:growl id="messages" showDetail="true"/>
+                    <!--                    <p:tieredMenu style="width:300px">-->
+                    <p:tieredMenu>
+
+                        <p:menuitem value="Common"/>
+                        <p:divider/>
+                        <p:menuitem value="TAALOS"/>
+                        <p:menuitem value="ZAHEU"/>
+                        <p:menuitem value="RMF"/>
+                        <p:menuitem value="TABREF"/>
+
+                    </p:tieredMenu>
+
+                </h:form>
+            </div>
+
+        </div>
+
+        <div class="span-18">
+
+            <div class="card grid-item">
+                <p:tabView activeIndex="${param.tab}">
+
+                    <p:tab title="Parameters">
+                        <ui:include src="/WEB-INF/primefaces/tables/pf_tbl_parameter.xhtml"/>
+                    </p:tab>
+
+                    <p:tab title="Files">
+                        <ui:include src="/WEB-INF/primefaces/tables/pf_tbl_sample.xhtml"/>
+                    </p:tab>
+
+                    <p:tab title="About this application">
+                        <ul>
+                            <li>
+                                Based on Spring boot web application with primefaces
+                            </li>
+                            <li>
+                                Configurable modules and files locations through properties files
+                            </li>
+                            <li>
+                                Predefined list of modules and parameters at database level
+                            </li>
+                            <li>
+                                One version backup of a file with format filename.ext.backup.timestamp
+                            </li>
+                            <li>
+                                Simple history for parameter and file modifications
+                            </li>
+                            <li>
+                                Roles to be defined and enforced parameters / files
+                            </li>
+                        </ul>
+                    </p:tab>
+
+                    <!--                    <p:tab title="Advanced Ajax">-->
+                    <!--                        <ul>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="autocomplete?tab=1">-->
+                    <!--                                    <h:outputText value="Auto-complete"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">PrimeFaces Auto-complete component.</span>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="modal-dialog-in-view?tab=1">-->
+                    <!--                                    <h:outputText value="Modal Dialog In View"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Display a modal dialog without leaving the current view state.</span>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="top-flow-with-embedded-subflow?tab=1">-->
+                    <!--                                    <h:outputText value="Top Flow with Embedded Sub-Flow"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Top flow with a sub-flow embedded within it without causing any redirects or a full page refresh.</span>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="poller?tab=1">-->
+                    <!--                                    <h:outputText value="Polling"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Shows PrimeFaces poller component accessing server-side Web Flow data.</span>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </p:tab>-->
+
+                    <!--                    <p:tab title="Validation">-->
+                    <!--                        <ul>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="validation-bean?tab=2">-->
+                    <!--                                    <h:outputText value="Bean Validation"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">JSR-303 Bean Validation Annotations.</span>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="validation-model?tab=2">-->
+                    <!--                                    <h:outputText value="Model Validation"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Web Flow specific mechanism with validation methods in the model object.</span>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </p:tab>-->
+
+                    <!--                    <p:tab title="Miscellaneous">-->
+                    <!--                        <h5>Comments: </h5>-->
+                    <!--                        <ul>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="spring-security-taglib?tab=3">-->
+                    <!--                                    <h:outputText value="Spring Security Facelets Tag Library"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Demonstrates use of the Spring Security Facelets tag library.</span>-->
+                    <!--                                <p class="notice">-->
+                    <!--                                    The above flow definition is protected with Spring Security.-->
+                    <!--                                    You'll be redirected to a login page the first time.-->
+                    <!--                                </p>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <h:outputLink value="file-upload?tab=3">-->
+                    <!--                                    <h:outputText value="File Upload"/>-->
+                    <!--                                </h:outputLink>-->
+                    <!--                                <br/>-->
+                    <!--                                <span class="alt">Uses the PrimeFaces fileUpload component to demonstrate uploading a file.</span>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </p:tab>-->
+
+                </p:tabView>
+            </div>
+
+            <!--            <div class="p-col">-->
+            <!--                -->
+            <!--            </div>-->
+
+        </div>
+        <!--        <hr/>-->
+    </ui:define>
+
+</ui:composition>
+

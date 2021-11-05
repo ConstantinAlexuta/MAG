@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h3>Parameter list</h3>
+    <h:form>
+        <p:dataTable var="parameter" value="#{parameterBean.parameterList}">
+
+            <p:column headerText="Id">
+                <h:outputText value="#{parameter.id}"/>
+            </p:column>
+
+            <p:column headerText="Name">
+                <h:outputText value="#{parameter.name}"/>
+            </p:column>
+
+            <p:column headerText="Value">
+                <h:outputText value="#{parameter.value}"/>
+            </p:column>
+
+            <p:column headerText="Actions">
+                <h:outputText value="#{parameter.actions}"/>
+            </p:column>
+
+            <p:column headerText="Last update DateTime">
+                <h:outputText value="#{parameter.lastUpdateDateTime}"/>
+            </p:column>
+
+            <p:column headerText="Last update User">
+                <h:outputText value="#{parameter.lastUpdateUser}"/>
+            </p:column>
+
+            <p:column headerText="History">
+                <h:outputText value="#{parameter.history}"/>
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+
+</ui:composition>
+

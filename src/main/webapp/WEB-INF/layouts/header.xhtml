@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>General Administration Module</title>
+        <link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/screen.css" type="text/css"
+              media="screen, projection"/>
+        <link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/print.css" type="text/css"
+              media="print"/>
+        <!--[if lt IE 8]>
+        <link rel="stylesheet" href="${request.servletPath}/styles/blueprint/ie.css" type="text/css"
+              media="screen, projection"/>
+        <![endif]-->
+        <ui:insert name="headIncludes"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div>
+                <br/>
+                <br/>
+                <h1>General Administration Module</h1>
+                <h3 class="alt">
+                    <ui:insert name="title"/>
+                </h3>
+                <div>
+                    <p>This is a simple web application that allows you to update the configuration files for
+                        components: TAALOS, ZAHEU, RMF, TABREF and CCN2 Adapter.
+                        <br/>
+                        In this application the user chooses one of the modules, then will have displayed screens, which
+                        in addition to storing them in the database are created and configurable. Configuration files
+                        are created because launching an application involves initializing some parameters that are done
+                        before accessing the database, like connection details to the base.
+                    </p>
+                </div>
+<!--                <hr/>-->
+            </div>
+            <div>
+                <ui:insert name="notes"/>
+            </div>
+            <div>
+                <ui:insert name="content"/>
+            </div>
+        </div>
+    </h:body>
+</f:view>
+</html>
